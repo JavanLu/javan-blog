@@ -14,7 +14,7 @@ public class CommonController {
 	
 	@RequestMapping(value = "csrf-demo",method=RequestMethod.GET)
 	public String demo(ModelMap model) {
-return "/csrf-demo";
+		return "/csrf-demo";
 	}
 	
 	@RequestMapping(value = "csrf-submit",method=RequestMethod.POST)
