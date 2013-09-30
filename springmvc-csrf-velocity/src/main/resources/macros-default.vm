@@ -1,0 +1,10 @@
+#**
+ * CSRFToken
+ * Generate a input field of type 'hidden' of token to avoid CSRF attack 
+ *#
+#macro( CSRFToken $id)
+	#if(!$id || $id == "")
+		#set($id="xToken")
+	#end
+	<input type="hidden" id="$id" name="xToken" value="$csrfTool.getToken($request)"/>
+#end

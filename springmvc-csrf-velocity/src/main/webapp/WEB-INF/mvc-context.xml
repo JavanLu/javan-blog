@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	   		http://www.springframework.org/schema/context
+	   		http://www.springframework.org/schema/context/spring-context-3.2.xsd
+			http://www.springframework.org/schema/mvc 
+			http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+			http://www.springframework.org/schema/util 
+			http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+	<mvc:annotation-driven />
+	
+	<context:component-scan base-package="com.javan.web.controller" />
+
+	<mvc:resources mapping="/resources/**" location="/resources/"
+		cache-period="31556926" />
+		
+	<mvc:default-servlet-handler />
+	
+	<!-- CSRF Interceptor handlers -->
+	<mvc:interceptors>
+		<bean class="com.javan.security.CSRFHandlerInterceptor" />
+	</mvc:interceptors>
+
+	<bean id="velocityConfig"
+		class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+		<property name="resourceLoaderPath" value="/WEB-INF/views/" />
+		<property name="velocityProperties">
+			<props>
+				<prop key="input.encoding">utf-8</prop>
+				<prop key="output.encoding">utf-8</prop>
+			</props>
+		</property>
+		<property name="configLocation" value="/WEB-INF/velocity.properties" />
+	</bean>
+
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+		<property name="cache" value="true" />
+		<property name="contentType" value="text/html;charset=utf-8" />
+		<property name="exposeSpringMacroHelpers" value="true" />
+		<property name="suffix">
+			<value>.vm</value>
+		</property>
+		<property name="toolboxConfigLocation" value="WEB-INF/toolbox.xml" />
+		<property name="exposeSessionAttributes" value="true" />
+	</bean>
+
+</beans>

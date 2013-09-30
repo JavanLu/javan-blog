@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<toolbox>
+<xhtml>true</xhtml>
+<tool>
+    <key>csrfTool</key>
+    <scope>application</scope>
+    <class>com.javan.util.CSRFTool</class>
+</tool>
+
+</toolbox> 

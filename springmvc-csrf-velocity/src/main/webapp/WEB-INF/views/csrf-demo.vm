@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<title>csrf demo</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body style="padding-top:70px">
+
+#if(${val})
+提交的值为：	
+<font color="red">${val}</font>
+<a href="csrf-demo">返回演示</a>
+#end
+<br>
+<br>
+<form id="csrf-form" action="/csrf-submit" method="post">
+   带有token的表单提交：
+   #CSRFToken()
+   <input name="val" type="text"/>
+   <button type="submit" id="csrf-smt" name="" >有token提交</button>
+</form>
+
+<hr>
+
+<form  id="noncsrf-form" action="/csrf-submit" method="post">
+   无token的表单提交：
+   <input name="val" type="text"/>
+   <button type="submit" id="non-csrf-smt">无token提交</button>
+</form>
+</body>
+</html>
